@@ -4,29 +4,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Table(name = "author")
-@Data
+@Table(name = "authors")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Long id;
 
+    @NotBlank(message = "Author name is required")
+    @Size(min = 2, max = 100, message = "Author name must be between 2 and 100 characters")
     @Column(nullable = false)
-    @NotBlank(message = "First name is required")
-    @Size(min = 3, max = 100, message = "First name must be between 3 and 100 characters")
     private String firstName;
 
     @Column(nullable = false, unique = true)

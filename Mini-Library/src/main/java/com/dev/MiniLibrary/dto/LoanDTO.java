@@ -1,19 +1,13 @@
 package com.dev.MiniLibrary.dto;
 
 import com.dev.MiniLibrary.entity.Book;
-import com.dev.MiniLibrary.entity.User;
-import lombok.Builder;
-import lombok.Data;
-
+import com.dev.MiniLibrary.entity.LibraryUser;
 import java.time.LocalDate;
-
-@Data
-@Builder
 public record LoanDTO(Long id,
 
                       Book bookId,
 
-                      User uiserId,
+                      LibraryUser uiserId,
 
                       LocalDate loanDate,
 

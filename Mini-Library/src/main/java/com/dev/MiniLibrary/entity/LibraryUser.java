@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class LibraryUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

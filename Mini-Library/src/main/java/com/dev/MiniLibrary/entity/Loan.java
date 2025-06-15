@@ -1,5 +1,6 @@
 package com.dev.MiniLibrary.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,8 @@ public class Loan {
     private Book book;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    @JsonIgnore
+    private LibraryUser libraryUser;
 
     private LocalDate loanDate;
 
