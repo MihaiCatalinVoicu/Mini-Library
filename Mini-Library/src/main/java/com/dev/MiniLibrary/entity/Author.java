@@ -1,18 +1,27 @@
 package com.dev.MiniLibrary.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
 @Entity
 @Table(name = "author")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false,)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -30,5 +39,6 @@ public class Author {
     private String nationality;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Book> Books;
 }
